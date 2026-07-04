@@ -1,0 +1,13 @@
+name: Bash check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  bash-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax
+        run: bash -n install.sh audit.sh rollback.sh lib/common.sh modules/*.sh
