@@ -1,6 +1,10 @@
 ---
-- name: Vérifier les services sécurité
-  command: systemctl is-active {{ item }}
+- name: Récupérer les informations des services systemd
+  service_facts:
+
+- name: Afficher l'état des services de sécurité
+  debug:
+    msg: "{{ item }} : {{ ansible_facts.services[item + '.service'].state | default('absent') }}"
   loop:
     - ssh
     - ufw
@@ -9,4 +13,3 @@
     - apparmor
     - clamav-freshclam
   changed_when: false
-  failed_when: false
