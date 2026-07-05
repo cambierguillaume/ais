@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module rollback
 
-echo "Running services"
+echo "Running rollback"
 
 # TODO: implement hardening logic

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module tmpfs
 
-echo "Running services"
+echo "Running tmpfs"
 
 # TODO: implement hardening logic

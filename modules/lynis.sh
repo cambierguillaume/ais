@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module lynis
 
-echo "Running services"
+echo "Running lynis"
 
 # TODO: implement hardening logic

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module kernel
 
-echo "Running services"
+echo "Running kernel"
 
 # TODO: implement hardening logic

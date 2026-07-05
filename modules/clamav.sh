@@ -1,15 +1,8 @@
 #!/bin/bash
-source lib/common.sh
-require_root
-info "Module ClamAV"
+set -Eeuo pipefail
 
-install_package clamav
-install_package clamav-daemon
+# Module clamav
 
-systemctl stop clamav-freshclam 2>/dev/null || true
-freshclam || true
-systemctl enable clamav-freshclam
-systemctl restart clamav-freshclam || true
+echo "Running clamav"
 
-clamscan --version > "$REPORT_DIR/clamav-version.txt" || true
-clamscan -ri /home > "$REPORT_DIR/clamav-home-scan.txt" 2>&1 || true
+# TODO: implement hardening logic

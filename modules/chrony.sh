@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module chrony
 
-echo "Running services"
+echo "Running chrony"
 
 # TODO: implement hardening logic

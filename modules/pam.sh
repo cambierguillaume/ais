@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module pam
 
-echo "Running services"
+echo "Running pam"
 
 # TODO: implement hardening logic

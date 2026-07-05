@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module firewall-extra
 
-echo "Running services"
+echo "Running firewall-extra"
 
 # TODO: implement hardening logic

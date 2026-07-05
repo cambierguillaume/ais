@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module sudo
 
-echo "Running services"
+echo "Running sudo"
 
 # TODO: implement hardening logic

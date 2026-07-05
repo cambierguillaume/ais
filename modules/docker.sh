@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module docker
 
-echo "Running services"
+echo "Running docker"
 
 # TODO: implement hardening logic

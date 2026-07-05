@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module journald
 
-echo "Running services"
+echo "Running journald"
 
 # TODO: implement hardening logic

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module fstab
 
-echo "Running services"
+echo "Running fstab"
 
 # TODO: implement hardening logic

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module logrotate
 
-echo "Running services"
+echo "Running logrotate"
 
 # TODO: implement hardening logic

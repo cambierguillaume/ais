@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module usb
 
-echo "Running services"
+echo "Running usb"
 
 # TODO: implement hardening logic

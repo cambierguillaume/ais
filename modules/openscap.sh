@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# Module services
+# Module openscap
 
-echo "Running services"
+echo "Running openscap"
 
 # TODO: implement hardening logic
