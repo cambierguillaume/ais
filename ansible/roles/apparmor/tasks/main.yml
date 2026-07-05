@@ -9,5 +9,5 @@
 - name: Activer AppArmor
   service:
     name: apparmor
-    enabled: yes
+    enabled: true
     state: started

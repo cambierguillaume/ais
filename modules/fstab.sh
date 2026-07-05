@@ -1,8 +1,5 @@
 #!/bin/bash
-set -Eeuo pipefail
-
-# Module fstab
-
-echo "Running fstab"
-
-# TODO: implement hardening logic
+source "$(dirname "$0")/../lib/common.sh"
+require_root
+backup_file /etc/fstab
+findmnt > "$REPORT_DIR/fstab-report.txt"

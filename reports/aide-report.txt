@@ -1,0 +1,1 @@
+WARNING: /etc/aide/aide.conf:1: Using 'database' is DEPRECATED. Update your config and use 'database_in' instead (line: 'database=file:/var/lib/aide/aide.db')

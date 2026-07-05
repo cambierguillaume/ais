@@ -1,0 +1,7 @@
+port 22
+port 22
+maxauthtries 3
+permitrootlogin no
+passwordauthentication yes
+x11forwarding no
+gatewayports no

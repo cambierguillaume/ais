@@ -1,17 +1,11 @@
 ---
-- name: Mettre à jour le cache APT
-  apt:
-    update_cache: yes
-    cache_valid_time: 3600
-
-- name: Installer les paquets communs
+- name: Installer paquets communs
   apt:
     name:
       - curl
       - wget
-      - vim
       - rsync
       - tar
       - unzip
-      - ca-certificates
     state: present
+    update_cache: true

@@ -1,8 +1,4 @@
 #!/bin/bash
-set -Eeuo pipefail
-
-# Module firewall-extra
-
-echo "Running firewall-extra"
-
-# TODO: implement hardening logic
+source "$(dirname "$0")/../lib/common.sh"
+require_root
+ufw status numbered > "$REPORT_DIR/firewall-extra.txt" || true

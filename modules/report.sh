@@ -1,8 +1,4 @@
 #!/bin/bash
-set -Eeuo pipefail
-
-# Module report
-
-echo "Running report"
-
-# TODO: implement hardening logic
+source "$(dirname "$0")/../lib/common.sh"
+require_root
+bash ./report.sh

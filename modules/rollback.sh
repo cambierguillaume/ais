@@ -1,8 +1,4 @@
 #!/bin/bash
-set -Eeuo pipefail
-
-# Module rollback
-
-echo "Running rollback"
-
-# TODO: implement hardening logic
+source "$(dirname "$0")/../lib/common.sh"
+require_root
+ls -lh "$BACKUP_DIR"

@@ -1,24 +1,36 @@
-# Ubuntu Hardening AIS v2.1
+# Ubuntu Hardening AIS v4.0
 
-Version améliorée du framework de hardening Ubuntu pour dossier Administrateur d'Infrastructures Sécurisées.
+Framework professionnel de durcissement Ubuntu/Debian pour un dossier **Administrateur d'Infrastructures Sécurisées (AIS)**.
 
-## Nouveautés v2.1
+## Objectifs
 
-- journalisation centralisée ;
-- rollback par module ;
-- vérification de syntaxe Bash ;
-- tests rapides ;
-- génération de rapport Markdown ;
-- structure prête pour GitHub Actions ;
-- documentation de soutenance.
+- Automatiser le hardening Linux avec Bash.
+- Déployer les configurations avec Ansible.
+- Générer des rapports d'audit.
+- Vérifier la qualité avec GitHub Actions.
+- Documenter la conformité ANSSI/CIS.
 
-## Utilisation
+## Utilisation rapide
 
 ```bash
-unzip ubuntu-hardening-ais-v2.1.zip
-cd ubuntu-hardening-ais-v2.1
 sudo ./install.sh
 sudo ./audit.sh
-sudo ./rollback.sh
-./tests/smoke-test.sh
+sudo ./report.sh
 ```
+
+## Tests
+
+```bash
+make test
+```
+
+## Ansible
+
+```bash
+cd ansible
+ansible-playbook site.yml -K
+```
+
+## Modules inclus
+
+SSH, UFW, Fail2ban, AppArmor, Auditd, AIDE, ClamAV, Sysctl, PAM, sudo, journald, logrotate, chrony, tmpfs, fstab, USB, Docker, Lynis, OpenSCAP, monitoring, reporting, backup et rollback.

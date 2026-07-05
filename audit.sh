@@ -1,31 +1,18 @@
 #!/bin/bash
 set -Eeuo pipefail
-
-source lib/common.sh
+source "$(dirname "$0")/lib/common.sh"
 require_root
 
-REPORT="$REPORT_DIR/audit-global.txt"
+REPORT="$REPORT_DIR/audit-global.md"
+echo "# Audit global Ubuntu Hardening AIS v$VERSION" > "$REPORT"
+echo "Date : $(date)" >> "$REPORT"
 
-{
-echo "Audit global Ubuntu AIS - $(date)"
-echo
-hostnamectl || true
-echo
-for s in ssh ufw fail2ban auditd apparmor clamav-freshclam clamav-daemon; do
-  service_state "$s"
-done
-echo
-echo "UFW"
-ufw status verbose || true
-echo
-echo "Fail2ban"
-fail2ban-client status sshd || true
-echo
-echo "AppArmor"
-aa-status || true
-echo
-echo "Auditd"
-auditctl -l || true
-} > "$REPORT"
+append_report "$REPORT" "Système" hostnamectl
+append_report "$REPORT" "Services échoués" systemctl --failed
+append_report "$REPORT" "UFW" ufw status verbose
+append_report "$REPORT" "Fail2ban SSH" fail2ban-client status sshd
+append_report "$REPORT" "AppArmor" aa-status
+append_report "$REPORT" "Auditd" auditctl -l
+append_report "$REPORT" "Sysctl principaux" sysctl kernel.randomize_va_space kernel.kptr_restrict net.ipv4.tcp_syncookies fs.protected_symlinks
 
 cat "$REPORT"

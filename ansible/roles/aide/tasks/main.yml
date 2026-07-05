@@ -6,11 +6,6 @@
       - aide-common
     state: present
 
-- name: Créer dossier configuration AIDE
-  file:
-    path: /etc/aide
-    state: directory
-
 - name: Créer configuration AIDE
   copy:
     dest: /etc/aide/aide.conf

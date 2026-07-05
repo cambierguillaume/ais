@@ -5,9 +5,3 @@
       - clamav
       - clamav-daemon
     state: present
-
-- name: Activer freshclam
-  service:
-    name: clamav-freshclam
-    enabled: yes
-    state: started

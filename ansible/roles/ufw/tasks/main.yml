@@ -4,17 +4,17 @@
     name: ufw
     state: present
 
-- name: Politique entrante deny
+- name: Politique entrante
   ufw:
     direction: incoming
     policy: deny
 
-- name: Politique sortante allow
+- name: Politique sortante
   ufw:
     direction: outgoing
     policy: allow
 
-- name: Autoriser les ports nécessaires
+- name: Autoriser ports
   ufw:
     rule: allow
     port: "{{ item }}"

@@ -1,0 +1,14 @@
+État : actif
+Journalisation : on (low)
+Par défaut : deny (incoming), allow (outgoing), deny (routed)
+Nouveaux profils : skip
+
+Vers                       Action      De
+----                       ------      --
+22/tcp                     ALLOW IN    Anywhere                   # SSH
+80/tcp                     ALLOW IN    Anywhere                   # HTTP
+443/tcp                    ALLOW IN    Anywhere                   # HTTPS
+22/tcp (v6)                ALLOW IN    Anywhere (v6)              # SSH
+80/tcp (v6)                ALLOW IN    Anywhere (v6)              # HTTP
+443/tcp (v6)               ALLOW IN    Anywhere (v6)              # HTTPS
+

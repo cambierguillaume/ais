@@ -1,0 +1,8 @@
+logs/
+reports/*.log
+backup/
+*.bak
+*.tmp
+*.swp
+__pycache__/
+.env

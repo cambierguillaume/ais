@@ -1,8 +1,4 @@
 #!/bin/bash
-set -Eeuo pipefail
-
-# Module docker-bench
-
-echo "Running docker-bench"
-
-# TODO: implement hardening logic
+source "$(dirname "$0")/../lib/common.sh"
+require_root
+warn "Docker Bench non installé automatiquement. Voir https://github.com/docker/docker-bench-security"

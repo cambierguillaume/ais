@@ -4,20 +4,18 @@
     name: openssh-server
     state: present
 
-- name: Durcir SSH
+- name: Configurer SSH
   lineinfile:
     path: /etc/ssh/sshd_config
     regexp: "^#?{{ item.key }}"
     line: "{{ item.key }} {{ item.value }}"
-    backup: yes
+    backup: true
   loop:
     - { key: "Port", value: "{{ ssh_port }}" }
     - { key: "PermitRootLogin", value: "no" }
     - { key: "PermitEmptyPasswords", value: "no" }
     - { key: "MaxAuthTries", value: "3" }
     - { key: "X11Forwarding", value: "no" }
-    - { key: "PubkeyAuthentication", value: "yes" }
-    - { key: "PasswordAuthentication", value: "yes" }
   notify: Restart ssh
 
 - name: Valider SSH

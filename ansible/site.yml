@@ -1,8 +1,7 @@
 ---
-- name: Hardening Ubuntu AIS
+- name: Hardening Ubuntu AIS v4
   hosts: ubuntu
   become: true
-
   roles:
     - common
     - ssh

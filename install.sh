@@ -1,19 +1,21 @@
 #!/bin/bash
 set -Eeuo pipefail
-
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$ROOT_DIR"
-
-source lib/common.sh
+source "$(dirname "$0")/lib/common.sh"
 require_root
+check_ubuntu
 
-info "Début hardening Ubuntu AIS v$VERSION"
-
+info "Début installation hardening v$VERSION"
 apt update
 
-for module in users ssh ufw fail2ban apparmor auditd aide clamav sysctl services report; do
-  info "Exécution module : $module"
-  bash "modules/$module.sh"
+MODULES=(packages users ssh ufw fail2ban apparmor auditd aide clamav sysctl sudo pam journald logrotate chrony tmpfs fstab usb docker lynis openscap services report)
+
+for module in "${MODULES[@]}"; do
+  if [ -x "modules/${module}.sh" ]; then
+    info "Module : $module"
+    bash "modules/${module}.sh"
+  else
+    warn "Module absent ou non exécutable : $module"
+  fi
 done
 
-info "Fin du hardening"
+info "Installation terminée"

@@ -1,8 +1,7 @@
 ---
 ssh_port: 22
 admin_user: admin
-timezone: Europe/Paris
 ufw_allowed_ports:
-  - 22
-  - 80
-  - 443
+  - "22"
+  - "80"
+  - "443"
