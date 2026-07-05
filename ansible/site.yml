@@ -1,0 +1,16 @@
+---
+- name: Hardening Ubuntu AIS
+  hosts: ubuntu
+  become: true
+
+  roles:
+    - common
+    - ssh
+    - ufw
+    - fail2ban
+    - apparmor
+    - auditd
+    - aide
+    - clamav
+    - sysctl
+    - services

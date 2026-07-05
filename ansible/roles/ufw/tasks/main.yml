@@ -1,0 +1,26 @@
+---
+- name: Installer UFW
+  apt:
+    name: ufw
+    state: present
+
+- name: Politique entrante deny
+  ufw:
+    direction: incoming
+    policy: deny
+
+- name: Politique sortante allow
+  ufw:
+    direction: outgoing
+    policy: allow
+
+- name: Autoriser les ports nécessaires
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop: "{{ ufw_allowed_ports }}"
+
+- name: Activer UFW
+  ufw:
+    state: enabled

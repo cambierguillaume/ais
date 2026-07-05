@@ -1,0 +1,13 @@
+---
+- name: Installer AppArmor
+  apt:
+    name:
+      - apparmor
+      - apparmor-utils
+    state: present
+
+- name: Activer AppArmor
+  service:
+    name: apparmor
+    enabled: yes
+    state: started

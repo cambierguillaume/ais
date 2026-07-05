@@ -1,0 +1,24 @@
+---
+- name: Installer AIDE
+  apt:
+    name:
+      - aide
+      - aide-common
+    state: present
+
+- name: Créer dossier configuration AIDE
+  file:
+    path: /etc/aide
+    state: directory
+
+- name: Créer configuration AIDE
+  copy:
+    dest: /etc/aide/aide.conf
+    content: |
+      database=file:/var/lib/aide/aide.db
+      database_out=file:/var/lib/aide/aide.db.new
+      gzip_dbout=no
+      report_url=file:/var/log/aide.log
+      ALLXTRAHASHES = sha512
+      NORMAL = p+i+n+u+g+s+m+c+sha512
+      / NORMAL

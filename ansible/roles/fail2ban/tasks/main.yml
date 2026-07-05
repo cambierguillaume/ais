@@ -1,0 +1,28 @@
+---
+- name: Installer Fail2ban
+  apt:
+    name: fail2ban
+    state: present
+
+- name: Configurer jail.local
+  copy:
+    dest: /etc/fail2ban/jail.local
+    backup: yes
+    content: |
+      [DEFAULT]
+      bantime = 1h
+      findtime = 10m
+      maxretry = 5
+      backend = systemd
+
+      [sshd]
+      enabled = true
+      port = {{ ssh_port }}
+      logpath = %(sshd_log)s
+  notify: Restart fail2ban
+
+- name: Activer Fail2ban
+  service:
+    name: fail2ban
+    enabled: yes
+    state: started

@@ -1,0 +1,25 @@
+---
+- name: Installer OpenSSH
+  apt:
+    name: openssh-server
+    state: present
+
+- name: Durcir SSH
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+    backup: yes
+  loop:
+    - { key: "Port", value: "{{ ssh_port }}" }
+    - { key: "PermitRootLogin", value: "no" }
+    - { key: "PermitEmptyPasswords", value: "no" }
+    - { key: "MaxAuthTries", value: "3" }
+    - { key: "X11Forwarding", value: "no" }
+    - { key: "PubkeyAuthentication", value: "yes" }
+    - { key: "PasswordAuthentication", value: "yes" }
+  notify: Restart ssh
+
+- name: Valider SSH
+  command: sshd -t
+  changed_when: false

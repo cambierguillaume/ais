@@ -1,0 +1,12 @@
+---
+- name: Vérifier les services sécurité
+  command: systemctl is-active {{ item }}
+  loop:
+    - ssh
+    - ufw
+    - fail2ban
+    - auditd
+    - apparmor
+    - clamav-freshclam
+  changed_when: false
+  failed_when: false

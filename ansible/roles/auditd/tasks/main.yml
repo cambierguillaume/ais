@@ -1,0 +1,30 @@
+---
+- name: Installer auditd
+  apt:
+    name:
+      - auditd
+      - audispd-plugins
+    state: present
+
+- name: Ajouter règles auditd
+  copy:
+    dest: /etc/audit/rules.d/hardening.rules
+    backup: yes
+    content: |
+      -w /etc/passwd -p wa -k passwd_changes
+      -w /etc/shadow -p wa -k shadow_changes
+      -w /etc/group -p wa -k group_changes
+      -w /etc/gshadow -p wa -k gshadow_changes
+      -w /etc/sudoers -p wa -k sudoers_changes
+      -w /etc/ssh/sshd_config -p wa -k sshd_config_changes
+
+- name: Charger règles auditd
+  command: augenrules --load
+  changed_when: false
+  failed_when: false
+
+- name: Activer auditd
+  service:
+    name: auditd
+    enabled: yes
+    state: started
